@@ -1,17 +1,32 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../../hooks/useAuth";
+import swal from "sweetalert";
 
 const Login = () => {
   const scale = 1.1;
+  //get the log information
+  const { login } = useAuth();
+  //try to user send the going path
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
-
     const password = form.password.value;
     console.log(email, password);
+    login(email, password)
+      .then(() => {
+        //now to navigate the user
+        navigate(location?.state ? location?.state : "/");
+        swal("Good job!", "now you are login successfully!", "success");
+      })
+      .catch(() =>
+        swal("Oops", "Something went wrong ! please try again", "error")
+      );
   };
   return (
     <div className=" bg-gradient-to-r from-white to-red-800 ">
