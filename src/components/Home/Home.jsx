@@ -1,10 +1,11 @@
-import React from "react";
+import AllJobs from "../AllJobs/AllJobs";
 import Banner from "../banner/Banner";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
+      <AllJobs></AllJobs>
     </div>
   );
 };
