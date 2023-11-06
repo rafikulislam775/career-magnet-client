@@ -1,8 +1,14 @@
 import { NavLink } from "react-router-dom";
-
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  
+  const { user, logOut } = useAuth();
+  const handleLogout = () => {
+    logOut()
+      .then((res) => console.log("Sign-out successful.", res.user))
+      .catch((err) => console.error("Sign-out failed.", err));
+  };
+
   const menus = (
     <>
       <li>
@@ -92,27 +98,41 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
-            <img  className="w-16" src="https://i.ibb.co/TR9kCVS/logo.png" alt="" />
+            <img
+              className="w-16"
+              src="https://i.ibb.co/TR9kCVS/logo.png"
+              alt=""
+            />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menus}</ul>
         </div>
         <div className="navbar-end">
-          <div className="group relative">
-            <div className="avatar">
-              <div className="w-12 rounded-full">
-                <img
-                  src="https://i.ibb.co/Wx7Q6Lf/images.png"
-                  alt="User Avatar"
-                />
+          {user ? (
+            <div className="group relative">
+              <div className="avatar">
+                <div className="w-10 rounded-full">
+                  <img src={user?.photoURL} alt="User Avatar" />
+                </div>
+              </div>
+
+              <div className="invisible group-hover:visible absolute bg-white text-black p-2 rounded shadow-md w-40  -left-28">
+                <div>{user?.displayName}</div>
+                {user?.email}
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-sm bg-red-950 text-white"
+                >
+                  LogOut
+                </button>
               </div>
             </div>
-
-            <div className="invisible group-hover:visible absolute bg-white text-black p-2 rounded shadow-md w-40  -left-28">
-              name@flowbite.com
-            </div>
-          </div>
+          ) : (
+            <button className="btn btn-sm">
+              <NavLink to="/login">Login</NavLink>
+            </button>
+          )}
         </div>
       </div>
     </div>
