@@ -54,11 +54,7 @@ const Navbar = () => {
         <NavLink
           to="/register"
           className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "from-pink-500 to-yellow-500"
-              : ""
+            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
           }
         >
           Register
