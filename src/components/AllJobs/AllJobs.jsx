@@ -1,15 +1,36 @@
+import { useQuery } from "@tanstack/react-query";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import useAxios from "../../hooks/useAxios";
 
 const AllJobs = () => {
+  const axios = useAxios();
+  const allJobs = async () => {
+    const res = await axios.get("/allJobs");
+    return res;
+  };
+  //01
+  const {data,isLoading,isError}= useQuery({
+    queryKey: ["AllJobs"],
+    queryFn: allJobs,
+  });
+  console.log('allJobs',data,isLoading)
   return (
-    <div>
+    <div className="min-h-screen   ">
+      <div className="text-8xl text-center pt-10 ">
+        {" "}
+        <span className=""> Our Recent Jobs</span>
+      </div>
+      <p className="my-10 text-center">
+        The Easiest Way to Get Your New Job ! 8 new opportunities posted today!
+      </p>
+
       <Tabs>
-        <TabList className="flex gap-8 ">
-          <Tab className="btn btn-sm">All Jobs</Tab>
-          <Tab className="btn btn-sm">Remote Job</Tab>
-          <Tab className="btn btn-sm">Hybrid</Tab>
-          <Tab className="btn btn-sm">On Site Job</Tab>
-          <Tab className="btn btn-sm">Part Time</Tab>
+        <TabList className="flex gap-8 justify-center tabs my-10 ">
+          <Tab className="btn btn-sm btn-outline tab-lifted">All Jobs</Tab>
+          <Tab className="btn btn-sm btn-outline tab-lifted  ">Remote Job</Tab>
+          <Tab className="btn btn-sm btn-outline tab-lifted">Hybrid</Tab>
+          <Tab className="btn btn-sm btn-outline tab-lifted ">On Site Job</Tab>
+          <Tab className="btn btn-sm btn-outline tab-lifted ">Part Time</Tab>
         </TabList>
 
         <TabPanel>
@@ -26,13 +47,18 @@ const AllJobs = () => {
         </TabPanel>
         <TabPanel>
           <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos commodi sed accusamus quam mollitia architecto perferendis blanditiis voluptate placeat qui provident eius iure eum ut, magnam doloribus assumenda distinctio quidem repellendus? Quo sint ipsa consequuntur enim unde porro assumenda explicabo doloribus reprehenderit, similique repudiandae quae corporis quaerat temporibus atque blanditiis!
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Dignissimos commodi sed accusamus quam mollitia architecto
+            perferendis blanditiis voluptate placeat qui provident eius iure eum
+            ut, magnam doloribus assumenda distinctio quidem repellendus? Quo
+            sint ipsa consequuntur enim unde porro assumenda explicabo doloribus
+            reprehenderit, similique repudiandae quae corporis quaerat
+            temporibus atque blanditiis!
           </p>
         </TabPanel>
 
         <TabPanel>
           <p>
-           
             Shigeru Miyamoto, Peach is the princess of the fictional Mushroom
             Kingdom, which is constantly under attack by Bowser. She often plays
             the damsel in distress role within the series and is the lead
@@ -43,7 +69,6 @@ const AllJobs = () => {
         </TabPanel>
         <TabPanel>
           <p>
-           
             the Super Nintendo Entertainment System as Mario and Ls sidekick.
             Yoshi later starred in platform and puzzle games, including Super
             Mario World 2: Yoshis Island, Yoshis Story and Yoshis Woolly World.
@@ -56,7 +81,6 @@ const AllJobs = () => {
         </TabPanel>
         <TabPanel>
           <p>
-            
             behalf. He is usually seen as a non-player character (NPC) who
             provides assistance to Mario and his friends in most games, but
             there are times when Toad(s) takes center stage and appears as a
