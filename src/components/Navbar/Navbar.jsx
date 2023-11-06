@@ -18,7 +18,7 @@ const Navbar = () => {
         <NavLink
           to="/allJobs"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-cyan-500" : ""
+            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
           }
         >
           All Jobs
@@ -28,7 +28,7 @@ const Navbar = () => {
         <NavLink
           to="/appliedJobs"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-cyan-500" : ""
+            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
           }
         >
           Applied Jobs
@@ -39,7 +39,7 @@ const Navbar = () => {
         <NavLink
           to="/contact"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-cyan-500" : ""
+            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
           }
         >
           Contact Us

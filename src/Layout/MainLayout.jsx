@@ -3,7 +3,7 @@ import Layout from "./Layout";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div >
       <Layout>
         <Outlet></Outlet>
       </Layout>
