@@ -13,7 +13,8 @@ const Register = () => {
     const email = form.email.value;
     const name = form.name.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    const photoUrl = form.photoUrl.value;
+    console.log(name, email, password, photoUrl);
     // regular expression for password validation
     if (!/^(?=.*[A-Z]).{6,}$/.test(password)) {
       swal(
@@ -24,7 +25,7 @@ const Register = () => {
       return;
     }
 
-    createUsers(email, password, name)
+    createUsers(email, password, photoUrl, name)
       //   .then((res) => console.log(res?.user))
       .then(() => swal("Welcome!", "You are SignUp successfully!", "success"))
 
@@ -47,7 +48,6 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
-                id="name"
                 className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="Your name"
                 required
@@ -60,7 +60,6 @@ const Register = () => {
               <input
                 type="email"
                 name="email"
-                id="email"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="name@company.com"
                 required
@@ -73,8 +72,19 @@ const Register = () => {
               <input
                 type="password"
                 name="password"
-                id="password"
                 placeholder="••••••••"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Photo URL
+              </label>
+              <input
+                type="url"
+                name="photoUrl"
+                placeholder="Photo URL"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 required
               />
