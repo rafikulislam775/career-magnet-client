@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 
 import Tilt from "react-parallax-tilt";
+import swal from "sweetalert";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
+  const { createUsers } = useAuth();
   const scale = 1.1;
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,24 +14,24 @@ const Register = () => {
     const name = form.name.value;
     const password = form.password.value;
     console.log(name, email, password);
-    //regular expression for password validation
-    // if (!/^(?=.*[A-Z]).{6,}$/.test(password)) {
-    //   swal(
-    //     "Oops",
-    //     "Password must be at least 6 characters long and contain at least one uppercase letter.",
-    //     "error"
-    //   );
-    //   return;
-    // }
+    // regular expression for password validation
+    if (!/^(?=.*[A-Z]).{6,}$/.test(password)) {
+      swal(
+        "Oops",
+        "Password must be at least 6 characters long and contain at least one uppercase letter.",
+        "error"
+      );
+      return;
+    }
 
-    // createUsers(email, password, name)
-    //   //   .then((res) => console.log(res?.user))
-    //   .then(() => swal("Welcome!", "You are SignUp successfully!", "success"))
+    createUsers(email, password, name)
+      //   .then((res) => console.log(res?.user))
+      .then(() => swal("Welcome!", "You are SignUp successfully!", "success"))
 
-    //   //   .catch((error) => console.error(error?.message));
-    //   .catch(() =>
-    //     swal("Oops", "Something went wrong ! please try again", "error")
-    //   );
+      //   .catch((error) => console.error(error?.message));
+      .catch(() =>
+        swal("Oops", "Something went wrong ! please try again", "error")
+      );
   };
   return (
     <div className=" bg-gradient-to-r from-white to-red-800 ">
@@ -37,9 +39,7 @@ const Register = () => {
         {/* only 2 thing to come out like glass "bg-white  bg-opacity-10" */}
         <div className="w-full bg-white bg-opacity-10 max-w-sm p-4 mt-10 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 ">
           <form onSubmit={handleSubmit} className="space-y-6" action="#">
-            <h5 className="text-xl font-medium ">
-              Sign up to our platform
-            </h5>
+            <h5 className="text-xl font-medium ">Sign up to our platform</h5>
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Your Name
