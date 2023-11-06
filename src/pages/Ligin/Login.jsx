@@ -7,7 +7,7 @@ import swal from "sweetalert";
 const Login = () => {
   const scale = 1.1;
   //get the log information
-  const { login } = useAuth();
+  const { login, googleLogin } = useAuth();
   //try to user send the going path
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,6 +19,18 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
     login(email, password)
+      .then(() => {
+        //now to navigate the user
+        navigate(location?.state ? location?.state : "/");
+        swal("Good job!", "now you are login successfully!", "success");
+      })
+      .catch(() =>
+        swal("Oops", "Something went wrong ! please try again", "error")
+      );
+  };
+  //handle google login
+  const handleGoogleLogin = () => {
+    googleLogin()
       .then(() => {
         //now to navigate the user
         navigate(location?.state ? location?.state : "/");
@@ -71,7 +83,10 @@ const Login = () => {
               </button>
             </Tilt>
             <Tilt tiltEnable={false} scale={scale} transitionSpeed={2500}>
-              <button className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-900 dark:hover:bg-red-600 dark:focus:ring-blue-800">
+              <button
+                onClick={handleGoogleLogin}
+                className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-900 dark:hover:bg-red-600 dark:focus:ring-blue-800"
+              >
                 <FcGoogle className="inline mr-3 text-lg"></FcGoogle>Login to
                 your google account
               </button>
