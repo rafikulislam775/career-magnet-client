@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
+import useAxios from "../../hooks/useAxios";
 
 const JobDetails = () => {
   const data = useLoaderData();
@@ -16,6 +17,15 @@ const JobDetails = () => {
     longDetails,
     jobApplicantsNumber,
   } = data;
+  const axios = useAxios();
+  const handleApplied = () => {
+    axios.post("/applyJob", data).then((res) => {
+      if (res.data.acknowledged) {
+        alert("successfully added   your input");
+      }
+      console.log(res.data);
+    });
+  };
 
   return (
     <div>
@@ -111,7 +121,10 @@ const JobDetails = () => {
               </div>
             </div>
             <div className="text-center">
-              <button className=" btn glass relative px-8 py-4 ml-4 overflow-hidden font-semibold rounded dark:bg-secondary dark:text-white">
+              <button
+                onClick={handleApplied}
+                className=" btn glass relative px-8 py-4 ml-4 overflow-hidden font-semibold rounded dark:bg-secondary dark:text-white"
+              >
                 Apply Now
                 <span className="absolute top-0 right-0 px-5 py-1 text-xs  text-center uppercase whitespace-no-wrap origin-bottom-left transform rotate-45 -translate-y-full translate-x-1/3 dark:bg-red-900">
                   New
