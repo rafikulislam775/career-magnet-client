@@ -22,7 +22,7 @@ const AllJobs = () => {
   });
   if (isLoading) {
     return (
-      <span className="loading text-8xl loading-spinner text-error"></span>
+      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-red-900"></div>
     );
   }
   if (isError) {
@@ -40,7 +40,7 @@ const AllJobs = () => {
       </p>
 
       <Tabs className="container mx-auto">
-        <TabList className="flex gap-8 justify-center tabs my-10 ">
+        <TabList className="flex gap-8 justify-center tabs my-10 p-3 ">
           <Tab className="btn btn-sm btn-outline tab-lifted">All Jobs</Tab>
           <Tab className="btn btn-sm btn-outline tab-lifted  ">Remote Job</Tab>
           <Tab className="btn btn-sm btn-outline tab-lifted">Hybrid</Tab>
@@ -49,14 +49,14 @@ const AllJobs = () => {
         </TabList>
 
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-4 gap-4 space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-3 gap-4 space-y-3 ">
             {Jobs?.data?.map((data) => (
               <AllJobCards key={data._id} data={data}></AllJobCards>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-4 gap-4 space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-3 gap-4 space-y-3">
             {Jobs?.data
               .filter((data) => data.category === "Remote Job")
               .map((filteredData) => (
@@ -69,7 +69,7 @@ const AllJobs = () => {
         </TabPanel>
 
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-4 gap-4 space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-3 gap-4 space-y-3">
             {Jobs?.data
               .filter((data) => data.category === "Hybrid")
               .map((filteredData) => (
@@ -81,7 +81,7 @@ const AllJobs = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-4 gap-4 space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-3 gap-4 space-y-3">
             {Jobs?.data
               .filter((data) => data.category === "On Site Job")
               .map((filteredData) => (
@@ -93,7 +93,7 @@ const AllJobs = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-4 gap-4 space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-4 gap-3 space-y-3">
             {Jobs?.data
               .filter((data) => data.category === "Part Time")
               .map((filteredData) => (
