@@ -12,6 +12,7 @@ const AllJobCards = ({ data }) => {
     applicationDeadline,
     salaryRange,
     jobApplicantsNumber,
+    shortDetails
   } = data;
   return (
     <div>
@@ -30,7 +31,7 @@ const AllJobCards = ({ data }) => {
               <p>{title}</p>{" "}
               <div className="badge badge-outline">{category}</div>
             </div>
-
+      
             <div className="badge badge-secondary">{salaryRange}</div>
             <div className="card-actions">
               {/* <div className="badge badge-outline">Fashion</div>
