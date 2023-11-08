@@ -118,7 +118,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {menus}
-              {privateMenus}
+              {user ? privateMenus : ""}
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
@@ -132,7 +132,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             {menus}
-            {privateMenus}
+            {user ? privateMenus : ""}
           </ul>
         </div>
         <div className="navbar-end">

@@ -9,6 +9,7 @@ import AppliedJobs from "../pages/Application/AppliedJobs";
 import AddJob from "../pages/Add Job/AddJob";
 import Blog from "../pages/Blog/Blog";
 import Error from "../pages/Error/Error";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -34,17 +35,30 @@ const router = createBrowserRouter([
       },
       {
         path: "jobDetails/:id",
-        element: <JobDetails></JobDetails>,
+        element: (
+          <PrivateRoute>
+            <JobDetails></JobDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5001/jobDetails/${params.id}`),
       },
       {
         path: "appliedJobs",
-        element: <AppliedJobs></AppliedJobs>,
+        element: (
+          <PrivateRoute>
+            <AppliedJobs></AppliedJobs>
+          </PrivateRoute>
+        ),
       },
       {
         path: "addJob",
-        element: <AddJob></AddJob>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddJob></AddJob>
+          </PrivateRoute>
+        ),
       },
       {
         path: "blog",
