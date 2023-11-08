@@ -3,8 +3,8 @@ import useAuth from "../../hooks/useAuth";
 const ContactUs = () => {
   const { user } = useAuth();
   return (
-    <div>
-      <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
+    <div className="">
+      <section className="py-16 h-[65vh]  dark:bg-gray-800 dark:text-gray-50">
         <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
           <div className="py-6 md:py-0 md:px-6">
             <h1 className="text-4xl font-bold">Get in touch</h1>
@@ -78,8 +78,7 @@ const ContactUs = () => {
               ></textarea>
             </label>
             <button
-              type="button"
-              className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ri dark:bg-violet-400 dark:text-gray-900 focus:ri hover:ri"
+              className=" btn btn-sm self-center rounded focus:ring hover:ring focus:ri dark:bg-red-400 dark:text-gray-900 focus:ri hover:ri"
             >
               Submit
             </button>

@@ -30,6 +30,16 @@ const Navbar = () => {
           Add Job
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/updateJob"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
+          }
+        >
+          Update Job
+        </NavLink>
+      </li>
     </>
   );
 
