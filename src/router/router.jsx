@@ -10,6 +10,7 @@ import AddJob from "../pages/Add Job/AddJob";
 import Blog from "../pages/Blog/Blog";
 import Error from "../pages/Error/Error";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import ContactUs from "../pages/ContactUs/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "contact",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },
