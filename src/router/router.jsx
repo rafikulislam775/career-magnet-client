@@ -8,11 +8,13 @@ import JobDetails from "../components/JobsCards/JobDetails";
 import AppliedJobs from "../pages/Application/AppliedJobs";
 import AddJob from "../pages/Add Job/AddJob";
 import Blog from "../pages/Blog/Blog";
+import Error from "../pages/Error/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <Error></Error>,
     children: [
       {
         index: true,
