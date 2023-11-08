@@ -1,8 +1,10 @@
 import { useState } from "react";
 import swal from "sweetalert";
+import useAxios from "../../hooks/useAxios";
 
 const AddJob = () => {
   const [selected, setSelected] = useState();
+  const axios = useAxios();
   const handleAddJob = (e) => {
     e?.preventDefault();
     const form = e.target;
@@ -15,21 +17,18 @@ const AddJob = () => {
     const category = selected;
     const longDetails = form.longDetails.value;
     const jobApplicantsNumber = form.jobApplicantsNumber.value;
-
-    // console.log(img, name, jobApplicantsNumber, price, rating, category);
-    //create a new object with the getting data
-    console.log(
-      img,
-      name,
-      title,
-      postingDate,
-      applicationDeadline,
-      salaryRange,
-      longDetails,
-      jobApplicantsNumber,
-      category
-    );
-    const newProducts = {
+    // console.log(
+    //   img,
+    //   name,
+    //   title,
+    //   postingDate,
+    //   applicationDeadline,
+    //   salaryRange,
+    //   longDetails,
+    //   jobApplicantsNumber,
+    //   category
+    // );
+    const newAddJobs = {
       img,
       name,
       title,
@@ -40,8 +39,15 @@ const AddJob = () => {
       jobApplicantsNumber,
       category,
     };
-    console.log(newProducts);
-    // console.log(newProducts);
+    // console.log(newAddJobs );
+    axios.post("/addJob", newAddJobs).then((res) => {
+      if (res.data.acknowledged) {
+        swal("Good job!", "successfully added your new Job!", "success");
+      }
+      console.log(res.data);
+    });
+
+    // console.log(newAddJobs );
     // //send data on server
     // fetch(
     //   "https://road-muster-server-5w2kuaxlh-islam-rafikuls-projects.vercel.app/addProducts",
@@ -50,7 +56,7 @@ const AddJob = () => {
     //     headers: {
     //       "content-type": "application/json",
     //     },
-    //     body: JSON.stringify(newProducts),
+    //     body: JSON.stringify(newAddJobs ),
     //   }
     // )
     //   .then((res) => res?.json())
