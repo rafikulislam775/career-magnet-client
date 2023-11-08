@@ -8,6 +8,30 @@ const Navbar = () => {
       .then((res) => console.log("Sign-out successful.", res.user))
       .catch((err) => console.error("Sign-out failed.", err));
   };
+  const privateMenus = (
+    <>
+      <li>
+        <NavLink
+          to="/appliedJobs"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
+          }
+        >
+          Applied Jobs
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/addJob"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
+          }
+        >
+          Add Job
+        </NavLink>
+      </li>
+    </>
+  );
 
   const menus = (
     <>
@@ -31,16 +55,7 @@ const Navbar = () => {
           All Jobs
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/appliedJobs"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
-          }
-        >
-          Applied Jobs
-        </NavLink>
-      </li>
+
       <li>
         {" "}
         <NavLink
@@ -95,6 +110,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {menus}
+              {privateMenus}
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
@@ -106,7 +122,10 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{menus}</ul>
+          <ul className="menu menu-horizontal px-1">
+            {menus}
+            {privateMenus}
+          </ul>
         </div>
         <div className="navbar-end">
           {user ? (
