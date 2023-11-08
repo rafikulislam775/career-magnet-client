@@ -67,10 +67,18 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
-      {/* <li>
-      {" "}
-      <NavLink to="/login">Login</NavLink>
-    </li> */}
+      <li>
+        {" "}
+        <NavLink
+          to="/blog"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? " bg-red-900 text-white" : ""
+          }
+        >
+          Our Blog
+        </NavLink>
+      </li>
+
       <li>
         {" "}
         <NavLink

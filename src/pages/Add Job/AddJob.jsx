@@ -17,17 +17,6 @@ const AddJob = () => {
     const category = selected;
     const longDetails = form.longDetails.value;
     const jobApplicantsNumber = form.jobApplicantsNumber.value;
-    // console.log(
-    //   img,
-    //   name,
-    //   title,
-    //   postingDate,
-    //   applicationDeadline,
-    //   salaryRange,
-    //   longDetails,
-    //   jobApplicantsNumber,
-    //   category
-    // );
     const newAddJobs = {
       img,
       name,
@@ -44,28 +33,8 @@ const AddJob = () => {
       if (res.data.acknowledged) {
         swal("Good job!", "successfully added your new Job!", "success");
       }
-      console.log(res.data);
+      // console.log(res.data);
     });
-
-    // console.log(newAddJobs );
-    // //send data on server
-    // fetch(
-    //   "https://road-muster-server-5w2kuaxlh-islam-rafikuls-projects.vercel.app/addProducts",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(newAddJobs ),
-    //   }
-    // )
-    //   .then((res) => res?.json())
-    //   .then((data) => {
-    //     // console.log(data);
-    //     if (data.insertedId) {
-    //       swal("Good job!", "successfully added your new Job!", "success");
-    //     }
-    //   });
   };
   return (
     <section className="p-6 bg-gray-800 text-gray-50">
