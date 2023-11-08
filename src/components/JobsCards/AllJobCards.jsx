@@ -26,16 +26,18 @@ const AllJobCards = ({ data }) => {
             </div>
 
             <div className="badge badge-secondary">{salaryRange}</div>
-            <div className="flex items-center">
+            <div className="flex gap-4 items-center">
               {" "}
-              Application Date Line :<MdCalendarMonth></MdCalendarMonth>{" "}
+              Date Line :<MdCalendarMonth></MdCalendarMonth>
               <div> {applicationDeadline}</div>
             </div>
             <div className="card-actions">
               {/* <div className="badge badge-outline">Fashion</div>
             <div className="badge badge-outline">Products</div> */}
               <NavLink to={`/jobDetails/${_id}`}>
-                <button className="btn btn-sm">details</button>
+                <button className="btn bg-red-950 text-white btn-sm">
+                  details
+                </button>
               </NavLink>
             </div>
           </div>

@@ -93,7 +93,7 @@ const AllJobs = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-4 gap-3 space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 p-8 lg:grid-cols-3 gap-3 space-y-3">
             {Jobs?.data
               .filter((data) => data.category === "Part Time")
               .map((filteredData) => (
