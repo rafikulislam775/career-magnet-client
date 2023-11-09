@@ -1,22 +1,24 @@
 import Tilt from "react-parallax-tilt";
 import PropTypes from "prop-types";
-import { SiArxiv } from "react-icons/si";
+// import { SiArxiv } from "react-icons/si";
 import useAxios from "../../hooks/useAxios";
 
+
 const JobAppliedCard = ({ data }) => {
+ 
   const scale = 1.1;
   const { _id, name, img, title, category, applicationDeadline, salaryRange } =
     data;
   const axios = useAxios();
   const handleDelete = (id) => {
-    console.log(id);
-    //   axios.delete(`/applyJob/${id}`).then((res) => console.log(res));
+    // console.log(id);
+    axios.delete(`/applyJob/${id}`).then((res) => console.log(res));
     //
-    fetch(`http://localhost:5001/applyJob/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    // fetch(`http://localhost:5001/applyJob/${_id}`, {
+    //   method: "DELETE",
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data));
   };
   return (
     <div>
@@ -31,12 +33,12 @@ const JobAppliedCard = ({ data }) => {
               className="object-cover w-full h-52 dark:bg-gray-500"
               src={img}
             />
-            <span
+            {/* <button
               onClick={() => handleDelete(_id)}
               className=" text-white btn btn-sm absolute btn-error  m-4 -top-1 -right-1"
             >
               <SiArxiv></SiArxiv>
-            </span>
+            </button> */}
           </div>
           <div className="flex flex-col flex-1 p-6">
             <div aria-label="Te nulla oportere reprimique his dolorum"></div>

@@ -1,10 +1,19 @@
 import { useState } from "react";
 import swal from "sweetalert";
 import useAxios from "../../hooks/useAxios";
+import useAuth from "../../hooks/useAuth";
 
 const AddJob = () => {
+  const { loading } = useAuth();
+  if (loading) {
+    return (
+      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-red-900"></div>
+    );
+  }
+
   const [selected, setSelected] = useState();
   const axios = useAxios();
+
   const handleAddJob = (e) => {
     e?.preventDefault();
     const form = e.target;
@@ -29,12 +38,18 @@ const AddJob = () => {
       category,
     };
     // console.log(newAddJobs );
-    axios.post("/addJob", newAddJobs).then((res) => {
-      if (res.data.acknowledged) {
-        swal("Good job!", "successfully added your new Job!", "success");
-      }
-      // console.log(res.data);
-    });
+    axios
+      .post("/addJob", newAddJobs)
+
+      .then((res) => {
+        if (res.data.acknowledged) {
+          swal("Good job!", "successfully added your new Job!", "success");
+        }
+      })
+      .catch((error) => {
+        swal("Oops", "Something went wrong ! please try again", "error");
+        console.log(error);
+      });
   };
   return (
     <section className="p-6 bg-gray-800 text-gray-50">
@@ -67,7 +82,7 @@ const AddJob = () => {
                   required
                 />
                 <label
-                  name="price"
+                  name="name"
                   className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Company Name
@@ -84,7 +99,7 @@ const AddJob = () => {
                   required
                 />
                 <label
-                  name="applicantsNumbers"
+                  name="title"
                   className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Job Title
@@ -152,7 +167,10 @@ const AddJob = () => {
                 placeholder=" "
                 required
               />
-              <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              <label
+                name="longDetails"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
                 Job Description
               </label>
             </div>
@@ -192,10 +210,7 @@ const AddJob = () => {
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
+            <button type="submit" className="text-white btn bg-red-900">
               Add Job
             </button>
           </form>

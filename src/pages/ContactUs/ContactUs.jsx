@@ -77,9 +77,7 @@ const ContactUs = () => {
                 className="block w-full border p-2 rounded-md focus:ring focus:ri focus:ri dark:bg-gray-800"
               ></textarea>
             </label>
-            <button
-              className=" btn btn-sm self-center rounded focus:ring hover:ring focus:ri dark:bg-red-400 dark:text-gray-900 focus:ri hover:ri"
-            >
+            <button className=" btn btn-sm  text-white rounded focus:ring hover:ring focus:ri dark:bg-red-800  focus:ri hover:ri">
               Submit
             </button>
           </form>

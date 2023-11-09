@@ -29,9 +29,9 @@ const UpdateJob = () => {
   console.log("allJobs", isLoading, Jobs);
   return (
     <div className="min-h-screen   ">
-      <div className="text-8xl text-center pt-10 ">
+      <div className="text-6xl text-center pt-10 ">
         {" "}
-        <span className=""> Our Recent Jobs</span>
+        <span className=""> Our Recent Jobs are available</span>
       </div>
       <p className="my-10 text-center">
         The Easiest Way to Get Your New Job ! 8 new opportunities posted today!

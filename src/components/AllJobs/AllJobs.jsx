@@ -28,7 +28,7 @@ const AllJobs = () => {
   if (isError) {
     return <p>Something went wrong: {error}</p>;
   }
-  console.log("allJobs", isLoading, Jobs);
+  // console.log("allJobs", isLoading, Jobs);
   return (
     <div className="min-h-screen   ">
       <div className="text-8xl text-center pt-10 ">

@@ -6,14 +6,12 @@ const JobDetails = () => {
   const data = useLoaderData();
   console.log(data);
   const {
-    _id,
     name,
     img,
     title,
     category,
     applicationDeadline,
     salaryRange,
-    postingDate,
     longDetails,
     jobApplicantsNumber,
   } = data;
@@ -21,7 +19,7 @@ const JobDetails = () => {
   const handleApplied = () => {
     axios.post("/applyJob", data).then((res) => {
       if (res.data.acknowledged) {
-        alert("successfully added   your input");
+        swal("Good job!", "Thanks for apply Our company!", "success");
       }
       console.log(res.data);
     });
