@@ -44,7 +44,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/jobDetails/${params.id}`),
+          fetch(
+            ` https://career-magnet-server-c39eufv93-islam-rafikuls-projects.vercel.app/jobDetails/:${params.id}`
+          ),
       },
       {
         path: "appliedJobs",
@@ -83,7 +85,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/updateJob/${params.id}`),
+          fetch(
+            ` https://career-magnet-server-c39eufv93-islam-rafikuls-projects.vercel.app/updateJob/:${params.id}`
+          ),
       },
     ],
   },

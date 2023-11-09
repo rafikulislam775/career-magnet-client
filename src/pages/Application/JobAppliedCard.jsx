@@ -14,7 +14,7 @@ const JobAppliedCard = ({ data }) => {
     // console.log(id);
     axios.delete(`/applyJob/${id}`).then((res) => console.log(res));
     //
-    // fetch(`http://localhost:5001/applyJob/${_id}`, {
+    // fetch(` https://career-magnet-server-c39eufv93-islam-rafikuls-projects.vercel.app/applyJob/${_id}`, {
     //   method: "DELETE",
     // })
     //   .then((res) => res.json())
