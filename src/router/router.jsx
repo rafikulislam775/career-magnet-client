@@ -11,7 +11,8 @@ import Blog from "../pages/Blog/Blog";
 import Error from "../pages/Error/Error";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ContactUs from "../pages/ContactUs/ContactUs";
-import UpdateJob from "../pages/updateJob/update";
+import UpdateJob from "../pages/updateJob/Update";
+import SingleJobUpdate from "../pages/updateJob/singleJobUpdate";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,12 @@ const router = createBrowserRouter([
       {
         path: "updateJob",
         element: <UpdateJob></UpdateJob>,
+      },
+      {
+        path: "/updateJob/:id",
+        element: <SingleJobUpdate></SingleJobUpdate>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5001/updateJob/${params.id}`),
       },
     ],
   },

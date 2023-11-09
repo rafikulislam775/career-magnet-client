@@ -35,7 +35,9 @@ const AllJobCards = ({ data }) => {
               {/* <div className="badge badge-outline">Fashion</div>
             <div className="badge badge-outline">Products</div> */}
               {data.id === null || data.id === undefined ? (
-                "Update"
+                <button className="btn bg-red-950 text-white btn-sm">
+                  <NavLink to={`/updateJob/${_id}`}>Update Job</NavLink>
+                </button>
               ) : (
                 <button className="btn bg-red-950 text-white btn-sm">
                   <NavLink to={`/jobDetails/${_id}`}>details</NavLink>

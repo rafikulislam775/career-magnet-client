@@ -3,7 +3,6 @@ import useAxios from "../../hooks/useAxios";
 import AllJobCards from "../../components/JobsCards/AllJobCards";
 
 const UpdateJob = () => {
-  const _id_ = 0;
   const axios = useAxios();
   const allJobs = async () => {
     const res = await axios.get("/allJobs");
